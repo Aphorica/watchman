@@ -12,6 +12,8 @@ executables:
   
 dependencies:
   watcher: ^0.9.7+3
+  sass: ^1.0.0-alpha
+  yaml: ^2.1.12
   
 #  path: ^1.4.1
 
