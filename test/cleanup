@@ -1,0 +1,3 @@
+#! /bin/sh
+find test -name '*.css' -exec rm -rf {} \;
+rm test/data/lower_1/copied.txt

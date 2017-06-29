@@ -1,1 +1,1 @@
-I should be copied to data/lower
+This should be copied to test/data/lower_1/copied.txt

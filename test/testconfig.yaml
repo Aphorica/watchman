@@ -1,0 +1,5 @@
+sass: 
+  - "test"
+copy: 
+  - src-path: "test/data/lower_2/copyMe.txt"
+    dst-path: "test/data/lower_1/copied.txt"

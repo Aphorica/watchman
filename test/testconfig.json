@@ -1,9 +1,0 @@
-{
-"sass": [ "test/data/lower_1" ],
-"cmd": [
-    {
-    "path": "test/data/lower_2/copyMe.txt",
-    "cmd": "cp %path% test/data/lower_2/copied.txt"
-    }
-  ]
-}

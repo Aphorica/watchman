@@ -1,6 +1,6 @@
 name: watchman
 description: Watches a set of files for changes
-version: 0.0.1
+version: 0.1.0
 #homepage: https://aphorica.com
 #author: rickb <rickb@aphorica.com>
 
