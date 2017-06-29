@@ -1,0 +1,5 @@
+#! /bin/sh
+
+dart bin/main.dart -v test/data/hello.txt test/data/lower/goodbye.txt &
+
+echo ready...
