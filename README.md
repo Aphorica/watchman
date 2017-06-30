@@ -6,8 +6,11 @@ Dart, which is an awesome thing.
 
 However, what isn't implemented (as of yet) is the 'watch' capability.
 
-Here is a little facility to provide that capability for Sass and also for
-file copies (which I needed.)
+Here is a little facility to provide that capability for Sass and a couple of nice
+other features:
+- processes a 'pubspec.src' file for environment substitution, if it exists.
+  See the 'Pubspec' section below.
+- copies listed files on change (which I needed.)
 
 It is driven by a yaml config file:
 
@@ -35,6 +38,23 @@ It is driven by a yaml config file:
 
 - You can specify as many entries as you want.
 
+#### Pubspec (experimental):
+An issue with the 'pubspec.yaml' file is that it can't contain environment variables
+(see this issue: https://github.com/dart-lang/pub/issues/1358).  That's a problem
+when you bounce from environment to environment.
+
+To address this, you can create a 'pubspec.src' file in the root directory that
+contains environment variables interspersed in its content.  _watchman_ will
+pick up that file and replace any environment specs in it with its
+value and then write it out to the 'pubspec.yaml'.  If watching, the
+'pubspec.src' file will be watched along with the other files, and write out the
+corresponding 'pubspec.yaml' file on changes.
+
+You can specify the environment variable in either Windows or *nix form - the
+program will parse them out either way and do the substitutions.
+
+After substituting, it will be written out to the 'pubspec.yaml' file.
+
 ## Installing as executable
 Until I get it into the pub registry, do a git clone and:
 
@@ -44,14 +64,34 @@ Until I get it into the pub registry, do a git clone and:
 - Create a configuration file.  If 'root' is not specified, it will use the 'cwd' as
   the root path.  (If this is not correct, relative file specs will error.)
 
+- Create a 'pubspec.src' if you want a pubspec with environment variables.
+
 - Run _watchman_, pointing to the config file:
 
-      watchman <-v> configfile.yaml <&>
+      watchman <-v -f -n> configfile.yaml <&>
 
+Args:
+<dl>
+<dt>-v (verbose)</dt>
+<dd>
 If you specify '-v', it will output information on what it thinks it is doing.  Probably
-not a bad thing to do the first couple of times you run it.
+not a bad thing to do the first couple of times you run it.</dd>
+<dt>-f (force)</dt>
+<dd>
+Normally on init, the app only replaces/writes output files that don't exist.  
+It doesn't know if the target app is out of date or not.  Specifying this flag will
+cause it to output all files it knows about.</dd>
+<dt>
+<dt>-n (no watch)</dt>
+<dd>
+Processes as init and exits, without setting watches.  Useful for straight builds
+without editing.</dd>
+</dl>
 
-(The ampersand ('&') is for *nix/osx users to put it in background mode.)
+#### Other
+- (The ampersand ('&') is for *nix/osx users to put it in background mode.)
+
+- You can run the flag args together, i.e. _-fn_.
 
 ## Caveats
 This is _very_ lightly tested.  I plan to revisit with a more comprehensive test suite,

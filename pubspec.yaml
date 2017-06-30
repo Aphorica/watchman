@@ -1,9 +1,8 @@
 name: watchman
 description: Watches a set of files for changes
-version: 0.1.0
-#homepage: https://aphorica.com
-#author: rickb <rickb@aphorica.com>
-
+version: 0.1.1
+homepage: https://aphorica.com
+author: rickb <rickb@aphorica.com>
 environment:
   sdk: '>=1.20.1 <2.0.0'
 
