@@ -1,5 +1,5 @@
 # watchman
-### Rick Berger, Aphorica Inc (rickb@aphorica.com)
+### Rick Berger, Aphorica Inc (gbergeraph@gmail.com)
 ---
 The Sass folks (http://sass-lang.com) have re-written the sass processor in
 Dart, which is an awesome thing.
